@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxeJewels - Fine Jewelry Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Luxe<span>Jewels</span></a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="products.html?category=rings">Rings</a>
+        <a href="products.html?category=necklaces">Necklaces</a>
+        <a href="products.html?category=earrings">Earrings</a>
+        <a href="products.html?category=bracelets">Bracelets</a>
+      </div>
+      <div class="nav-icons">
+        <a href="account.html" class="nav-icon" id="account-link" style="display:none;">&#9733;</a>
+        <a href="cart.html" class="nav-icon">
+          &#9829;
+          <span class="cart-count">0</span>
+        </a>
+        <a href="login.html" class="nav-icon" id="auth-link">Login</a>
+        <button class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">New Collection 2026</span>
+          <h1>Timeless <span>Elegance</span> for Every Moment</h1>
+          <p>Discover our exquisite collection of fine jewelry, crafted with precision and designed to celebrate life's most precious moments.</p>
+          <div class="hero-buttons">
+            <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
+            <a href="#categories" class="btn btn-outline-white btn-lg">Explore</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://picsum.photos/seed/hero/600/600" alt="Featured Jewelry">
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section" id="categories" style="background: var(--bg-alt);">
+      <div class="container">
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-subtitle">Find the perfect piece for every occasion</p>
+        <div class="grid grid-4">
+          <a href="products.html?category=rings" class="category-card">
+            <img src="https://picsum.photos/seed/cat-rings/400/400" alt="Rings">
+            <div class="category-overlay">
+              <h3>Rings</h3>
+              <p>24 Products</p>
+            </div>
+          </a>
+          <a href="products.html?category=necklaces" class="category-card">
+            <img src="https://picsum.photos/seed/cat-neck/400/400" alt="Necklaces">
+            <div class="category-overlay">
+              <h3>Necklaces</h3>
+              <p>18 Products</p>
+            </div>
+          </a>
+          <a href="products.html?category=earrings" class="category-card">
+            <img src="https://picsum.photos/seed/cat-ear/400/400" alt="Earrings">
+            <div class="category-overlay">
+              <h3>Earrings</h3>
+              <p>20 Products</p>
+            </div>
+          </a>
+          <a href="products.html?category=bracelets" class="category-card">
+            <img src="https://picsum.photos/seed/cat-brace/400/400" alt="Bracelets">
+            <div class="category-overlay">
+              <h3>Bracelets</h3>
+              <p>15 Products</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Featured Collection</h2>
+        <p class="section-subtitle">Handpicked pieces our customers love</p>
+        <div class="grid grid-4" id="featured-products">
+          <!-- Products will be loaded here by JS -->
+        </div>
+        <div class="text-center mt-30">
+          <a href="products.html" class="btn btn-outline">View All Products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" style="background: var(--bg-alt);">
+      <div class="container">
+        <div class="grid grid-2" style="align-items: center; gap: 50px;">
+          <div>
+            <span class="hero-badge">Our Story</span>
+            <h2 style="margin-top: 15px;">Crafted with Passion, Worn with Pride</h2>
+            <p style="color: var(--text-light); margin-top: 15px; line-height: 1.8;">
+              At LuxeJewels, we believe every piece of jewelry tells a story. Since 2010, 
+              our master artisans have been creating exquisite pieces that combine timeless 
+              elegance with modern sophistication.
+            </p>
+            <p style="color: var(--text-light); line-height: 1.8;">
+              Each gemstone is carefully selected, each setting meticulously crafted, 
+              ensuring that every piece meets our exacting standards of quality and beauty.
+            </p>
+            <div class="flex gap-30 mt-30">
+              <div>
+                <h3 style="color: var(--primary); font-size: 2rem;">500+</h3>
+                <p class="text-muted">Unique Designs</p>
+              </div>
+              <div>
+                <h3 style="color: var(--primary); font-size: 2rem;">50k+</h3>
+                <p class="text-muted">Happy Customers</p>
+              </div>
+              <div>
+                <h3 style="color: var(--primary); font-size: 2rem;">15+</h3>
+                <p class="text-muted">Years Experience</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="https://picsum.photos/seed/about/600/500" alt="Our Craft" style="border-radius: var(--radius-lg); width: 100%;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section" style="background: var(--secondary); color: #FFF;">
+      <div class="container text-center">
+        <h2 style="color: #FFF;">Stay in the Loop</h2>
+        <p style="color: #CCC; margin: 10px 0 30px;">Subscribe to our newsletter for exclusive offers and new arrivals</p>
+        <form id="newsletter-form" style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
+          <input type="email" placeholder="Enter your email" class="form-control" style="flex: 1;" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Load featured products
+    document.addEventListener('DOMContentLoaded', () => {
+      const featured = getFeaturedProducts().slice(0, 8);
+      const container = document.getElementById('featured-products');
+      
+      featured.forEach(product => {
+        const discount = getDiscountPercent(product.originalPrice, product.price);
+        const inWishlist = isInWishlist(product.id);
+        
+        container.innerHTML += `
+          <div class="product-card">
+            <div class="product-card-image">
+              <a href="product.html?id=${product.id}">
+                <img src="${getProductImage(product)}" alt="${product.name}">
+              </a>
+              ${discount > 0 ? `<span class="product-badge sale">-${discount}%</span>` : ''}
+              <div class="product-actions">
+                <button class="product-action-btn ${inWishlist ? 'wishlist-active' : ''}" 
+                        onclick="handleWishlist(${product.id}, this)">
+                  ${inWishlist ? '&#9829;' : '&#9825;'}
+                </button>
+                <button class="product-action-btn" onclick="addToCart(${product.id})">&#9881;</button>
+              </div>
+            </div>
+            <div class="product-card-body">
+              <p class="product-category">${product.category}</p>
+              <h4><a href="product.html?id=${product.id}">${product.name}</a></h4>
+              <div class="product-rating">
+                <span class="stars">${generateStars(product.rating)}</span>
+                <span class="rating-count">(${product.reviews})</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">${formatPrice(product.price)}</span>
+                ${product.originalPrice ? `<span class="original-price">${formatPrice(product.originalPrice)}</span>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      // Newsletter form
+      document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast('Thank you for subscribing!', 'success');
+        e.target.reset();
+      });
+    });
+
+    function handleWishlist(productId, btn) {
+      const added = toggleWishlist(productId);
+      btn.classList.toggle('wishlist-active', added);
+      btn.innerHTML = added ? '&#9829;' : '&#9825;';
+    }
+  </script>
+
+</body>
+</html>
