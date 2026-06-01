@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - LuxeJewels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Luxe<span>Jewels</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="products.html?category=rings">Rings</a>
+        <a href="products.html?category=necklaces">Necklaces</a>
+        <a href="products.html?category=earrings">Earrings</a>
+        <a href="products.html?category=bracelets">Bracelets</a>
+      </div>
+      <div class="nav-icons">
+        <a href="account.html" class="nav-icon" id="account-link" style="display:none;">&#9733;</a>
+        <a href="cart.html" class="nav-icon">
+          &#9829;
+          <span class="cart-count">0</span>
+        </a>
+        <a href="login.html" class="nav-icon" id="auth-link">Login</a>
+        <button class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Breadcrumb -->
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span class="current">Shopping Cart</span>
+      </div>
+    </div>
+
+    <!-- Cart Section -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <h1 style="font-size: 2rem; margin-bottom: 30px;">Shopping Cart</h1>
+
+        <!-- Cart Content -->
+        <div id="cart-content">
+          <!-- Loaded by JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+
+</body>
+</html>

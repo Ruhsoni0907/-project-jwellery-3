@@ -1,11 +1,8 @@
-require('dotenv').config();
-const dns = require('dns');
-dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1']);
-const mongoose = require('mongoose');
-const Product = require('./models/Product');
-
+// ===== Product Data =====
 const PRODUCTS = [
+  // RINGS
   {
+    id: 1,
     name: "Diamond Solitaire Ring",
     category: "rings",
     price: 1299.99,
@@ -18,9 +15,11 @@ const PRODUCTS = [
     stock: 15,
     featured: true,
     rating: 4.8,
-    reviews: 124
+    reviews: 124,
+    createdAt: "2026-01-15"
   },
   {
+    id: 2,
     name: "Rose Gold Infinity Band",
     category: "rings",
     price: 449.99,
@@ -33,9 +32,11 @@ const PRODUCTS = [
     stock: 28,
     featured: true,
     rating: 4.6,
-    reviews: 89
+    reviews: 89,
+    createdAt: "2026-01-20"
   },
   {
+    id: 3,
     name: "Silver Sapphire Halo Ring",
     category: "rings",
     price: 699.99,
@@ -48,9 +49,11 @@ const PRODUCTS = [
     stock: 12,
     featured: false,
     rating: 4.7,
-    reviews: 67
+    reviews: 67,
+    createdAt: "2026-02-01"
   },
   {
+    id: 4,
     name: "Gold Emerald Cocktail Ring",
     category: "rings",
     price: 899.99,
@@ -63,9 +66,11 @@ const PRODUCTS = [
     stock: 8,
     featured: false,
     rating: 4.5,
-    reviews: 42
+    reviews: 42,
+    createdAt: "2026-02-10"
   },
   {
+    id: 5,
     name: "Diamond Eternity Band",
     category: "rings",
     price: 1899.99,
@@ -78,9 +83,13 @@ const PRODUCTS = [
     stock: 10,
     featured: true,
     rating: 4.9,
-    reviews: 156
+    reviews: 156,
+    createdAt: "2026-01-25"
   },
+
+  // NECKLACES
   {
+    id: 6,
     name: "Pearl Strand Necklace",
     category: "necklaces",
     price: 599.99,
@@ -93,9 +102,11 @@ const PRODUCTS = [
     stock: 20,
     featured: true,
     rating: 4.7,
-    reviews: 98
+    reviews: 98,
+    createdAt: "2026-01-18"
   },
   {
+    id: 7,
     name: "Diamond Pendant Necklace",
     category: "necklaces",
     price: 1199.99,
@@ -108,9 +119,11 @@ const PRODUCTS = [
     stock: 18,
     featured: true,
     rating: 4.8,
-    reviews: 134
+    reviews: 134,
+    createdAt: "2026-01-22"
   },
   {
+    id: 8,
     name: "Silver Chain Choker",
     category: "necklaces",
     price: 179.99,
@@ -123,9 +136,11 @@ const PRODUCTS = [
     stock: 35,
     featured: false,
     rating: 4.4,
-    reviews: 76
+    reviews: 76,
+    createdAt: "2026-02-05"
   },
   {
+    id: 9,
     name: "Rose Gold Locket",
     category: "necklaces",
     price: 349.99,
@@ -138,9 +153,11 @@ const PRODUCTS = [
     stock: 22,
     featured: false,
     rating: 4.6,
-    reviews: 58
+    reviews: 58,
+    createdAt: "2026-02-12"
   },
   {
+    id: 10,
     name: "Sapphire Tennis Necklace",
     category: "necklaces",
     price: 2499.99,
@@ -153,9 +170,13 @@ const PRODUCTS = [
     stock: 5,
     featured: true,
     rating: 4.9,
-    reviews: 45
+    reviews: 45,
+    createdAt: "2026-01-30"
   },
+
+  // EARRINGS
   {
+    id: 11,
     name: "Diamond Stud Earrings",
     category: "earrings",
     price: 799.99,
@@ -168,9 +189,11 @@ const PRODUCTS = [
     stock: 25,
     featured: true,
     rating: 4.8,
-    reviews: 167
+    reviews: 167,
+    createdAt: "2026-01-16"
   },
   {
+    id: 12,
     name: "Pearl Drop Earrings",
     category: "earrings",
     price: 299.99,
@@ -183,9 +206,11 @@ const PRODUCTS = [
     stock: 30,
     featured: false,
     rating: 4.5,
-    reviews: 82
+    reviews: 82,
+    createdAt: "2026-02-03"
   },
   {
+    id: 13,
     name: "Silver Hoop Earrings",
     category: "earrings",
     price: 149.99,
@@ -198,9 +223,11 @@ const PRODUCTS = [
     stock: 45,
     featured: false,
     rating: 4.3,
-    reviews: 112
+    reviews: 112,
+    createdAt: "2026-02-08"
   },
   {
+    id: 14,
     name: "Rose Gold Chandelier Earrings",
     category: "earrings",
     price: 459.99,
@@ -213,9 +240,11 @@ const PRODUCTS = [
     stock: 15,
     featured: true,
     rating: 4.7,
-    reviews: 64
+    reviews: 64,
+    createdAt: "2026-01-28"
   },
   {
+    id: 15,
     name: "Diamond Halo Earrings",
     category: "earrings",
     price: 1399.99,
@@ -228,9 +257,13 @@ const PRODUCTS = [
     stock: 10,
     featured: true,
     rating: 4.9,
-    reviews: 89
+    reviews: 89,
+    createdAt: "2026-01-20"
   },
+
+  // BRACELETS
   {
+    id: 16,
     name: "Gold Chain Bracelet",
     category: "bracelets",
     price: 399.99,
@@ -243,9 +276,11 @@ const PRODUCTS = [
     stock: 32,
     featured: false,
     rating: 4.5,
-    reviews: 73
+    reviews: 73,
+    createdAt: "2026-02-02"
   },
   {
+    id: 17,
     name: "Tennis Bracelet",
     category: "bracelets",
     price: 1599.99,
@@ -258,9 +293,11 @@ const PRODUCTS = [
     stock: 12,
     featured: true,
     rating: 4.9,
-    reviews: 108
+    reviews: 108,
+    createdAt: "2026-01-19"
   },
   {
+    id: 18,
     name: "Silver Charm Bracelet",
     category: "bracelets",
     price: 229.99,
@@ -273,9 +310,11 @@ const PRODUCTS = [
     stock: 28,
     featured: false,
     rating: 4.4,
-    reviews: 91
+    reviews: 91,
+    createdAt: "2026-02-07"
   },
   {
+    id: 19,
     name: "Rose Gold Bangle Set",
     category: "bracelets",
     price: 349.99,
@@ -288,9 +327,11 @@ const PRODUCTS = [
     stock: 20,
     featured: false,
     rating: 4.6,
-    reviews: 67
+    reviews: 67,
+    createdAt: "2026-02-14"
   },
   {
+    id: 20,
     name: "Diamond Cuff Bracelet",
     category: "bracelets",
     price: 2199.99,
@@ -303,26 +344,68 @@ const PRODUCTS = [
     stock: 7,
     featured: true,
     rating: 4.8,
-    reviews: 52
+    reviews: 52,
+    createdAt: "2026-01-27"
   }
 ];
 
-async function seed() {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log('Connected to MongoDB');
-
-    await Product.deleteMany({});
-    console.log('Cleared existing products');
-
-    await Product.insertMany(PRODUCTS);
-    console.log(`Seeded ${PRODUCTS.length} products`);
-
-    process.exit(0);
-  } catch (error) {
-    console.error('Seed error:', error.message);
-    process.exit(1);
+// ===== Helper Functions =====
+function getProducts() {
+  const stored = localStorage.getItem('products');
+  if (stored) {
+    return JSON.parse(stored);
   }
+  localStorage.setItem('products', JSON.stringify(PRODUCTS));
+  return PRODUCTS;
 }
 
-seed();
+function saveProducts(products) {
+  localStorage.setItem('products', JSON.stringify(products));
+}
+
+function getProductById(id) {
+  const products = getProducts();
+  return products.find(p => p.id === parseInt(id));
+}
+
+function getProductsByCategory(category) {
+  const products = getProducts();
+  return products.filter(p => p.category === category);
+}
+
+function getFeaturedProducts() {
+  const products = getProducts();
+  return products.filter(p => p.featured);
+}
+
+function formatPrice(price) {
+  return '$' + price.toFixed(2);
+}
+
+function getDiscountPercent(original, current) {
+  if (!original) return 0;
+  return Math.round(((original - current) / original) * 100);
+}
+
+function generateStars(rating) {
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating % 1 >= 0.5;
+  let stars = '';
+  for (let i = 0; i < fullStars; i++) {
+    stars += '<span class="star filled">&#9733;</span>';
+  }
+  if (hasHalf) {
+    stars += '<span class="star filled">&#9733;</span>';
+  }
+  const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
+  for (let i = 0; i < emptyStars; i++) {
+    stars += '<span class="star">&#9733;</span>';
+  }
+  return stars;
+}
+
+function getProductImage(product) {
+  return product.images && product.images.length > 0 
+    ? product.images[0] 
+    : 'https://picsum.photos/seed/placeholder/600/600';
+}

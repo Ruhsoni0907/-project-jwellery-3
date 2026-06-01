@@ -1,4 +1,7 @@
 require('dotenv').config();
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1']);
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -14,9 +17,11 @@ require('./config/passport');
 
 const app = express();
 
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5000';
+
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: CLIENT_URL,
   credentials: true
 }));
 app.use(express.json());
@@ -43,7 +48,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes
+// API Routes
 app.use('/auth', require('./routes/auth'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/cart', require('./routes/cart'));
@@ -54,6 +59,14 @@ app.use('/api/admin', require('./routes/admin'));
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// SPA fallback - serve index.html for non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Error handler

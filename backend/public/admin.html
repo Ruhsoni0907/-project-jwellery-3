@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - LuxeJewels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Luxe<span>Jewels</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="products.html?category=rings">Rings</a>
+        <a href="products.html?category=necklaces">Necklaces</a>
+        <a href="products.html?category=earrings">Earrings</a>
+        <a href="products.html?category=bracelets">Bracelets</a>
+      </div>
+      <div class="nav-icons">
+        <a href="account.html" class="nav-icon" id="account-link">&#9733;</a>
+        <a href="cart.html" class="nav-icon">
+          &#9829;
+          <span class="cart-count">0</span>
+        </a>
+        <a href="#" class="nav-icon" id="auth-link">Logout</a>
+        <button class="mobile-menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Admin Layout -->
+    <div class="admin-layout">
+      <!-- Sidebar -->
+      <aside class="admin-sidebar">
+        <a href="#" class="nav-item active" data-section="dashboard" onclick="switchSection('dashboard', this)">
+          &#128200; Dashboard
+        </a>
+        <a href="#" class="nav-item" data-section="products" onclick="switchSection('products', this)">
+          &#128188; Products
+        </a>
+        <a href="#" class="nav-item" data-section="orders" onclick="switchSection('orders', this)">
+          &#128230; Orders
+        </a>
+        <a href="account.html" class="nav-item">
+          &#8592; Back to Account
+        </a>
+      </aside>
+
+      <!-- Content -->
+      <div class="admin-content">
+
+        <!-- Dashboard Section -->
+        <div class="admin-section active" id="section-dashboard">
+          <h2 style="margin-bottom: 25px;">Dashboard</h2>
+          
+          <div class="grid grid-4" style="margin-bottom: 30px;">
+            <div class="admin-stat-card">
+              <h4>Total Products</h4>
+              <div class="value" id="stat-products">0</div>
+            </div>
+            <div class="admin-stat-card">
+              <h4>Total Orders</h4>
+              <div class="value" id="stat-orders">0</div>
+            </div>
+            <div class="admin-stat-card">
+              <h4>Total Revenue</h4>
+              <div class="value" id="stat-revenue">$0</div>
+            </div>
+            <div class="admin-stat-card">
+              <h4>Total Users</h4>
+              <div class="value" id="stat-users">0</div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg); padding: 25px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+            <h3 style="margin-bottom: 15px;">Recent Orders</h3>
+            <div id="recent-orders">
+              <!-- Loaded by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Section -->
+        <div class="admin-section" id="section-products">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+            <h2>Products</h2>
+            <button class="btn btn-primary" onclick="showAddProductModal()">+ Add Product</button>
+          </div>
+
+          <div style="background: var(--bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden;">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="products-table">
+                  <!-- Loaded by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders Section -->
+        <div class="admin-section" id="section-orders">
+          <h2 style="margin-bottom: 25px;">Orders</h2>
+          
+          <div style="background: var(--bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden;">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-table">
+                  <!-- Loaded by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Add/Edit Product Modal -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 id="modal-title">Add Product</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="product-form">
+          <input type="hidden" id="edit-product-id">
+          
+          <div class="form-group">
+            <label for="product-name">Product Name *</label>
+            <input type="text" id="product-name" class="form-control" required>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="product-category">Category *</label>
+              <select id="product-category" class="form-control" required>
+                <option value="rings">Rings</option>
+                <option value="necklaces">Necklaces</option>
+                <option value="earrings">Earrings</option>
+                <option value="bracelets">Bracelets</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="product-metal">Metal *</label>
+              <select id="product-metal" class="form-control" required>
+                <option value="gold">Gold</option>
+                <option value="silver">Silver</option>
+                <option value="rosegold">Rose Gold</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="product-price">Price *</label>
+              <input type="number" id="product-price" class="form-control" step="0.01" min="0" required>
+            </div>
+            <div class="form-group">
+              <label for="product-original-price">Original Price (Optional)</label>
+              <input type="number" id="product-original-price" class="form-control" step="0.01" min="0">
+            </div>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label for="product-gemstone">Gemstone</label>
+              <select id="product-gemstone" class="form-control">
+                <option value="none">None</option>
+                <option value="diamond">Diamond</option>
+                <option value="sapphire">Sapphire</option>
+                <option value="emerald">Emerald</option>
+                <option value="pearl">Pearl</option>
+                <option value="amethyst">Amethyst</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="product-stock">Stock *</label>
+              <input type="number" id="product-stock" class="form-control" min="0" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="product-image">Image URL</label>
+            <input type="text" id="product-image" class="form-control" placeholder="https://picsum.photos/...">
+          </div>
+
+          <div class="form-group">
+            <label for="product-description">Description *</label>
+            <textarea id="product-description" class="form-control" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label style="display: flex; align-items: center; gap: 8px;">
+              <input type="checkbox" id="product-featured" style="width: 16px; height: 16px; accent-color: var(--primary);">
+              <span>Featured Product</span>
+            </label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveProduct()">Save Product</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>
